@@ -1,0 +1,41 @@
+
+	<!DOCTYPE html>
+
+    <html lang="pt-br">
+    
+    <head>
+        <link rel="icon" type="image/png" href="efects/imagens/logoicon.ico" />
+        <link rel="stylesheet" type="text/css" href="efects/efect.css" />
+        <meta charset="utf-8" />
+    
+        <p align=center><a><img border=0></a></td>
+            <td width=80% valign=center align=center bgcolor=#FFFFFF>
+                <font face="Tahoma, arial" size=6 color=green><b>SISTEMA CALCULO DE VIAGEM </b>
+                </font>
+        </p>
+    
+        <title>Calcula Viagem</title>
+    </head>
+
+    <body>
+    
+    <form method="POST" >
+     
+        {% csrf_token %}
+        <fieldset>
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+            <div class="pure-control-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            </div>
+            {% endfor %}
+
+            <div class="pure-controls">
+                <button type="submit" class="pure-button pure-button-primary">Cadastrar</button>
+            </div>
+        </fieldset>
+	</form>
+</body>
