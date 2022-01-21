@@ -1,5 +1,6 @@
 from django.shortcuts import render ,redirect
 from .forms import FormCalculo
+from .models import Calculos
 
 
 # Create your views here.
@@ -17,6 +18,7 @@ def FazerCalculo(request):
 
         if form.is_valid():
             context['is_valid'] = True
+            context['tittle'] = "Teste"
             form.save()
             return redirect('/calculos')
 
@@ -30,8 +32,15 @@ def FazerCalculo(request):
     return render(request, template_name, context)
 
 
-def ListarCalculo(request):
-    pass
+def ListarCalculoId(request):
+    template_name = 'base.html'
+    return render(request, template_name)
+
+
+def ListarTodosCalculos(request):
+    List= Calculos.objects.all()
+    template_name = 'ListarTodos.html'
+    return render(request, template_name ,{'List':List})
 
 
 

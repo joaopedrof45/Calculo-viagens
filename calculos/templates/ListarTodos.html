@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags   %}
+{% load widget_tweaks %}
+
+{% block content %}<br><br>
+
+
+<table class="table table-responsive">
+    <thead class="thead-dark ">
+      <tr>
+        <th scope="col">Numero Procolo</th>
+        <th scope="col">Dias uteis</th>
+        <th scope="col">Data Inicial</th>
+        <th scope="col">Data Final</th>
+        <th scope="col">Valor Passagem</th>
+        <th scope="col">Valor Translado</th>
+        <th scope="col">Cargo</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Atualizado em</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    {% for value in List%}
+    <tbody>
+      <tr>
+        <th scope="row">{{value.numero_protocolo}}</th>
+        <td>{{value.dias_utei}}</td>
+        <td>{{value.data_inical}}</td>
+        <td>{{value.data_final}}</td>
+        <td>{{value.valor_passagem}}</td>
+        <td>{{value.valor_translado}}</td>
+        <td>{{value.cargo}}</td>
+        <td>{{value.estado}}</td>
+        <td>{{value.cidade}}</td>
+        <td>{{value.update_at}}</td>
+        <td>
+            <button class="btn btn-primary" ><a href="#" style="color: white;">Editar</a>  </button>
+            <button class="btn btn-primary" ><a href="#" style="color: white;">Excluir</a</button>
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+  
+ 
+
+
+
+{% endblock %}

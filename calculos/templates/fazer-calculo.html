@@ -1,41 +1,64 @@
+{% extends "base.html" %}
 
-	<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags   %}
+{% load widget_tweaks %}
 
-    <html lang="pt-br">
-    
-    <head>
-        <link rel="icon" type="image/png" href="efects/imagens/logoicon.ico" />
-        <link rel="stylesheet" type="text/css" href="efects/efect.css" />
-        <meta charset="utf-8" />
-    
-        <p align=center><a><img border=0></a></td>
-            <td width=80% valign=center align=center bgcolor=#FFFFFF>
-                <font face="Tahoma, arial" size=6 color=green><b>SISTEMA CALCULO DE VIAGEM </b>
-                </font>
-        </p>
-    
-        <title>Calcula Viagem</title>
-    </head>
 
-    <body>
-    
-    <form method="POST" >
-     
-        {% csrf_token %}
-        <fieldset>
-            {{ form.non_field_errors }}
+{% block content %}
 
-            {% for field in form %}
-            <div class="pure-control-group">
-                {{ field.label_tag }}
-                {{ field }}
-                {{ field.errors }}
+<div class="container">
+    <div class="form-group" >
+        <form method="POST" >{% csrf_token %}
+                <div class="row">
+                    <h1>Fomulário De Viagem</h1>
+                </div>    
+                    <br><Br>
+
+                <!--
+                    Aqui outra forma de renderizar o form completo
+                    html 
+
+                    {% if form %}
+                    <form action="" method="POST">{% csrf_token %}
+                    {{form|crispy}}
+                    {% endif %} 
+                    
+                !-->
+
+                    <label for="exampleInputEmail1">É defensor?</label>
+                    {% render_field form.defensorbool class="form-check-label"  %}<br>
+
+                    <label for="exampleInputEmail1">Número Protocolo</label>
+                    {% render_field form.numero_protocolo class="form-control" placeholder="Ex:123" type="number" %}
+
+                    <label for="exampleInputEmail1">Dias úteis</label>
+                    {% render_field form.dias_utei class="form-control" placeholder="Ex:123" type="number" %}
+
+                    <label for="exampleInputEmail1">Data Inicial</label>
+                    {% render_field form.data_inical class="form-control" placeholder="Ex:123" type="datetime-local" %}
+
+                    <label for="exampleInputEmail1">Data Final</label>
+                    {% render_field form.data_final class="form-control" placeholder="Ex:123" type="datetime-local" %}
+
+                    <label for="exampleInputEmail1">Valor Passagem</label>
+                    {% render_field form.valor_passagem class="form-control" placeholder="Ex:50.0" type="number" %}
+
+                    <label for="exampleInputEmail1">Valor translado</label>
+                    {% render_field form.valor_translado class="form-control" placeholder="Ex:60.0" type="number" %}
+
+                    <label for="exampleInputEmail1">Cargo</label>
+                    {% render_field form.cargo class="form-control" placeholder="Ex:Analista" type="text" %}
+
+                    <label for="exampleInputEmail1">Estado</label>
+                    {% render_field form.estado class="form-control" placeholder="Ex:PR" type="text" %}
+
+                    <label for="exampleInputEmail1">Cidade</label>
+                    {% render_field form.cidade class="form-control" placeholder="Ex:Ponta Grossa" type="text" %}<br>
+                    
+                    <button class="btn btn-primary" type="submit">Enviar</button></form>
+
+                </div>
             </div>
-            {% endfor %}
-
-            <div class="pure-controls">
-                <button type="submit" class="pure-button pure-button-primary">Cadastrar</button>
-            </div>
-        </fieldset>
-	</form>
-</body>
+        </form>
+{% endblock %}
