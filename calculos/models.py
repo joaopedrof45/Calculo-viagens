@@ -17,7 +17,7 @@ class Calculos(models.Model):
 
 
     def __str__(self):
-        return self.numero_protocolo
+        return self.numero_protocolo 
 
     class Meta:
         verbose_name='Calculo'

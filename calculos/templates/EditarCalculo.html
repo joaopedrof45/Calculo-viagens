@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags   %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="form-group" >
+        <form method="POST"  action="../../editar/{{List.numero_protocolo}}/">{% csrf_token %}
+                <div class="row">
+                    <h1>Editar Cadastro Viagem</h1>
+                </div>    
+                    <br><Br>
+                        
+                        <label for="exampleInputEmail1">É defensor?</label>
+                        <input maxlength="500" id="id_defensorbool" name="defensorbool" type="checkbox" class="form-check-label" id="exampleFormControlInput1" placeholder="nome@exemplo.com" value="{{List.defensorbool}}"><br>
+                        
+                        <label for="exampleInputEmail1">Número Protocolo</label>
+                        <input id="id_numero_protocolo" name="numero_protocolo" type="text" class="form-control"  placeholder="nome@exemplo.com" value="{{List.numero_protocolo}}">
+                        
+                        <label for="exampleInputEmail1">Dias úteis</label>
+                        <input  name="dias_utei" type="number" class="form-control"  placeholder="nome@exemplo.com" value="{{List.dias_utei}}">
+                        
+                        <label for="exampleInputEmail1">Data Inicial</label>
+                        <input id="id_data_inical" name="data_inical" type="datetime-local" class="form-control"  placeholder="nome@exemplo.com" value="{{List.data_inical}}">
+                        
+                        <label for="exampleInputEmail1">Data Final</label>
+                        <input id="id_data_final"name="data_final" type="datetime-local" class="form-control"  placeholder="nome@exemplo.com" value="{{List.data_final}}">
+                        
+                        <label for="exampleInputEmail1">Valor Passagem</label>
+                        <input id="id_valor_passagem" name="valor_passagem" type="number" class="form-control"  placeholder="nome@exemplo.com" value="{{List.valor_passagem}}">
+                        
+                        <label for="exampleInputEmail1">Valor translado</label>
+                        <input id="id_valor_translado"name="valor_translado" type="number" class="form-control" placeholder="nome@exemplo.com" value="{{List.valor_translado}}">
+                        
+                        <label for="exampleInputEmail1">Cargo</label>
+                        <input maxlength="50" id="id_cargo" name="cargo" type="text" class="form-control"  placeholder="nome@exemplo.com" value="{{List.cargo}}">
+                        
+                        <label for="exampleInputEmail1">Estado</label>
+                        <input maxlength="50" id="id_estado" name="estado"type="text" class="form-control"  placeholder="nome@exemplo.com" value="{{List.estado}}">
+                       
+                        <label for="exampleInputEmail1">Cidade</label>
+                        <input maxlength="50" id="id_cidade" name="cidade"type="text" class="form-control"  placeholder="nome@exemplo.com" value="{{List.cidade}}">
+                        <br>
+
+
+                        <button class="btn btn-primary" type="submit">Editar</button></form>
+
+                    </div>
+                </div>
+            </form>
+
+{% endblock %}

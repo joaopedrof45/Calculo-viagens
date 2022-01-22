@@ -37,14 +37,30 @@
         <td>{{value.cidade}}</td>
         <td>{{value.update_at}}</td>
         <td>
-            <button class="btn btn-primary" ><a href="#" style="color: white;">Editar</a>  </button>
-            <button class="btn btn-primary" ><a href="#" style="color: white;">Excluir</a</button>
+            <button class="btn btn-primary" ><a href="{% url 'listarcalculo' value.numero_protocolo %}" style="color: white;">Editar&nbsp</a></button>
+            <button class="btn btn-danger" ><a href="{% url 'deletarid' value.numero_protocolo %}" style="color: white;">Excluir</a</button>
         </td>
       </tr>
     </tbody>
     {% endfor %}
+
+ 
   </table>
-  
+  <div class="pagination">
+    <span class="step-links">
+        {% if List.has_previous %}
+            <a href="?page={{ List.previous_page_number }}">Anterior</a>
+        {% endif %}
+    
+        <span class="current">
+            {{ List.number }} de {{ List.paginator.num_pages }}
+        </span>
+    
+        {% if List.has_next %}
+            <a href="?page={{ List.next_page_number }}">Próxima</a>
+        {% endif %}
+    </span>
+</div>
  
 
 
