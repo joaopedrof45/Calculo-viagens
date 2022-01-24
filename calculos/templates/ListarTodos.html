@@ -5,8 +5,10 @@
 {% load widget_tweaks %}
 
 {% block content %}<br><br>
-
-
+<div class="form-group input-group">
+	<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+	<input name="consulta" id="txt_consulta" placeholder="Consultar" type="text" class="form-control">
+ </div>
 <table class="table table-responsive">
     <thead class="thead-dark ">
       <tr>
@@ -38,7 +40,7 @@
         <td>{{value.update_at}}</td>
         <td>
             <button class="btn btn-primary" ><a href="{% url 'listarcalculo' value.numero_protocolo %}" style="color: white;">Editar&nbsp</a></button>
-            <button class="btn btn-danger" ><a href="{% url 'deletarid' value.numero_protocolo %}" style="color: white;">Excluir</a</button>
+            <button class="btn btn-danger" ><a href="#" onclick="DeletarViagem({{value.numero_protocolo}})" style="color: white;">Excluir</a</button>
         </td>
       </tr>
     </tbody>
@@ -62,7 +64,29 @@
     </span>
 </div>
  
+<script>
+  function DeletarViagem(id){
 
+    Swal.fire({
+  title: 'Deseja realmente excluir a viagem?',
+  text: "Esta ação é irreversivel !",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  CancelButtonText:'cancelar',
+  confirmButtonText: 'Sim excluir!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href="../deletar/"+id+""
+
+  }
+})
+
+
+  }
+
+</script>
 
 
 {% endblock %}

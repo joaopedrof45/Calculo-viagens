@@ -2,6 +2,8 @@ from django.shortcuts import render ,redirect , get_object_or_404
 from .forms import FormCalculo
 from .models import Calculos
 from django.core.paginator import Paginator
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -20,6 +22,7 @@ def FazerCalculo(request):
             context['is_valid'] = True
             context['tittle'] = "Teste"
             form.save()
+            messages.success(request,"Viagem Cadastrada com Sucesso")
             return redirect('/calculos')
 
     else:
@@ -68,7 +71,7 @@ def EditarId(request,id):
         #mostrado abaixo fazendo request.POST['campo'] ou pelo get_object objeto.atributo
 
         calculo.defensorbool= post.defensorbool
-        calculo.numero_protocolo =request.POST['numero_protocolo']
+        calculo.numero_protocolo =id
         calculo.dias_utei=request.POST['dias_utei']
         calculo.data_inical = request.POST['data_inical']
         calculo.data_final=request.POST['data_final']
@@ -78,6 +81,7 @@ def EditarId(request,id):
         calculo.estado=request.POST['estado']
         calculo.cidade=request.POST['cidade']
         calculo.save()
+        messages.success(request,"Viagem Editada com Sucesso")
 
     return redirect('/calculos')
     
@@ -87,6 +91,7 @@ def EditarId(request,id):
 def DeletarId(request,id):
     post = get_object_or_404(Calculos, pk=id)
     post.delete()
+    messages.success(request,"Viagem deletada com Sucesso")
     return redirect('listartodos')
   
 
