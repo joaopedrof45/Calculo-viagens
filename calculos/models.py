@@ -1,7 +1,7 @@
 from django.db import models
 
 class Calculos(models.Model):
-    defensorbool= models.BooleanField('defensor')
+    defensorbool= models.BooleanField('defensor',default=False)
     numero_protocolo= models.CharField('Numero Protocolo',primary_key=True ,max_length=500)
     dias_utei=models.IntegerField('Dias úteis')
     data_inical=models.DateTimeField('Data Inicial')

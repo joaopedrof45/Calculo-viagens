@@ -53,18 +53,31 @@ def ListarTodosCalculos(request):
 
 
 def EditarId(request,id):
-    post = get_object_or_404(Calculos, pk=id)
-    
-    
-    form = Calculos(request.POST)
-    form.save()
 
-    #nao funciona , se na der para passar a instancia  completa do post para o objeto 
-    #pode-se fazer manual instanciando o objeto e passando os atributos individualmente do post do form
-    # para dentro do atributo o obejeto
-    # exe calculo.valor_passagem= request.POST['valor_passagem']
-    #depois dar o objeto.save()
+    if request.method =='POST':
+        
+        post = get_object_or_404(Calculos, numero_protocolo=id)
+        
+        calculo = Calculos()
 
+        #verificar como arrumar se nao vir o checkbox do defensor que seria 0 ou 1 false ou true , mas 
+        #quando desmarcado vem sem nada   
+
+        #nao funciona , se na der para passar a instancia  completa do post para o objeto 
+        #pode-se fazer manual instanciando o objeto e passando os atributos individualmente do post do form como
+        #mostrado abaixo fazendo request.POST['campo'] ou pelo get_object objeto.atributo
+
+        calculo.defensorbool= post.defensorbool
+        calculo.numero_protocolo =request.POST['numero_protocolo']
+        calculo.dias_utei=request.POST['dias_utei']
+        calculo.data_inical = request.POST['data_inical']
+        calculo.data_final=request.POST['data_final']
+        calculo.valor_passagem = request.POST['valor_passagem']
+        calculo.valor_translado=request.POST['valor_translado']
+        calculo.cargo = request.POST['cargo']
+        calculo.estado=request.POST['estado']
+        calculo.cidade=request.POST['cidade']
+        calculo.save()
 
     return redirect('/calculos')
     
