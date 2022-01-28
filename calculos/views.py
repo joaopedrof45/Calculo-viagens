@@ -51,6 +51,45 @@ def ListarTodosCalculos(request):
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
+    #se o usuario desejar fazer pesquisa personalizada
+    pesquisa = request.GET.get('search')
+    opcao = request.GET.get('tipo')
+    
+
+    #verificando por qual campo irá fazer o filtro
+    if pesquisa:
+        if opcao == "numero_protocolo":
+            posts = Calculos.objects.filter(numero_protocolo=pesquisa)
+
+        if opcao == "dias_utei":
+            posts = Calculos.objects.filter(dias_utei=pesquisa)
+
+        if opcao == "data_inical":
+            posts = Calculos.objects.filter(data_inical=pesquisa)
+
+        if opcao == "data_final":
+            posts = Calculos.objects.filter(data_final=pesquisa)
+
+        if opcao == "valor_passagem":
+            posts = Calculos.objects.filter(valor_passagem=pesquisa)
+
+        if opcao == "valor_translado":
+            posts = Calculos.objects.filter(valor_translado=pesquisa)
+
+        if opcao == "cargo":
+            posts = Calculos.objects.filter(cargo=pesquisa)
+
+        if opcao == "estado":
+            posts = Calculos.objects.filter(estado=pesquisa)
+
+        if opcao == "cidade":
+            posts = Calculos.objects.filter(cidade=pesquisa)
+
+        if opcao == "update_at":
+            posts = Calculos.objects.filter(update_at=pesquisa)
+        
+        
+    
     template_name = 'ListarTodos.html'
     return render(request, template_name ,{'List':posts})
 

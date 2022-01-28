@@ -5,10 +5,38 @@
 {% load widget_tweaks %}
 
 {% block content %}<br><br>
-<div class="form-group input-group">
-	<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-	<input name="consulta" id="txt_consulta" placeholder="Consultar" type="text" class="form-control">
- </div>
+<form method=”GET”>
+  <div >
+    <input type="text" class="form-control" placeholder="" name="search" id="search">
+  </div>
+  <br>
+  <div class="input-group-prepend">
+
+    <select class="form-select" aria-label="Default select example" name="tipo">
+      <option disabled selected>Default</option>
+      <option value=numero_protocolo>Numero Procolo</option>
+      <option value="dias_utei">Dias uteis</option>
+      <option value="data_inical">Data Inicial</option>
+      <option value="data_final">Data Final</option>
+      <option value="valor_passagem">Valor Passagem</option>
+      <option value="valor_translado">Valor Translado</option>
+      <option value="cargo">Cargo</option>
+      <option value="estado">Estado</option>
+      <option value="cidade">Cidade</option>
+      <option value="update_at">Atualizado em</option>
+    </select>
+    <button class="btn btn-secondary" type="submit" id="button-addon1">Buscar
+      
+    </button>
+
+  </div>
+
+
+  
+  </form>
+
+
+
 <table class="table table-responsive">
     <thead class="thead-dark ">
       <tr>
